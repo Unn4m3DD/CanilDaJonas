@@ -363,7 +363,25 @@ function App() {
                     <div className="mb-2 flex w-fit flex-row items-center rounded border border-gray-300 p-2 hover:bg-gray-100">
                       {format(new Date(e.utcTime), "P, HH:mm")}
                       <i
-                        onClick={() => {
+                        onClick={async () => {
+                          console.log("asd");
+                          console.log(
+                            await collection?.updateOne(
+                              {
+                                id: {
+                                  $eq: modal.id,
+                                },
+                              },
+
+                              {
+                                $pull: {
+                                  history: {
+                                    utcTime: modal.history[i].utcTime,
+                                  },
+                                },
+                              }
+                            )
+                          );
                           modal.history.splice(i, 1);
                           setModal({ ...modal });
                         }}
