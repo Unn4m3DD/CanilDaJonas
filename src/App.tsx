@@ -258,7 +258,7 @@ function App() {
                 }}
               />
               <label className="ml-2" htmlFor="walk-multiple">
-                Selecionar Varios
+                Selecionar Vários
               </label>
             </div>
             {selectMultiple &&
